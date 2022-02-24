@@ -8,7 +8,9 @@ const homeController = require('../src/controller/home.controller')
 app.use(express.json());
 app.use('/products', productapiController);
 app.use('/home', homeController);
-
+app.use("/login",async (req,res) =>{
+ return res.render("users/login.ejs");
+})
 
 app.set('view engine', 'ejs');
 app.use(express.static("public"))

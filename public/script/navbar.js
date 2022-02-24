@@ -19,7 +19,7 @@ function navbar() {
                     <li>CLiQ Cash</li>
                     <li>Gift Card</li>
                     <li>CLiQ Care</li>
-                    <li>SIGN UP / SIGN IN</li>
+                    <li ><a style="color:white ; text-decoration:none" href ="http://localhost:4553/login">SignUp / SignIn</a></li>
                 </ul>
             </div>
         </div>
