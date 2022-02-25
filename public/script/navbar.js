@@ -45,10 +45,8 @@ function navbar() {
 
 <div class="ravbox1">
     <div class="rav1">
-
-        
-        <a style="text-decoration: none" href="http://localhost:4553/products?name=remanika"><p>Women's Fashion</p></a>
-        <a style="text-decoration: none" href="http://localhost:4553/products?name=levis"><p>Men's Fashion</p></a>
+        <p>Women's Fashion</p>
+<p>Men's Fashion</p>
 <p>TV & Appliances</p>
 <p>Mobile Phones</p>
 <p>Electronics</p>

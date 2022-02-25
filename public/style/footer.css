@@ -31,9 +31,6 @@ font-family: 'Roboto Condensed', sans-serif;
             align-items: center;
         }
        
-        #list {
-            padding-top: 30px;
-        }
         #foot_top > #app{
             display: flex;
             justify-content: space-around;

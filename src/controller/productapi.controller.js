@@ -2,7 +2,7 @@
 const express = require('express');
 // const ejs = require('ejs')
 const router = express.Router();
-const Product = require('../modle/productapi.modle')
+const Product = require('../models/productapi.modle')
 
 router.get('', async(req, res) => {
 
