@@ -9,6 +9,10 @@ font-family: 'Poppins', sans-serif;
 font-family: 'Roboto Condensed', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 #ravnav {
     height: 100px;
     background-color: rgb(33,33,33);

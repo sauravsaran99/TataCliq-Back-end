@@ -47,7 +47,7 @@ document.querySelector('#ravnavone').addEventListener('click', function() {
 })
 
 document.querySelector('.two4').addEventListener('click', function() {
-    window.location.href = 'store.html'
+    window.location.href = 'http://localhost:4553/cart'
 })
 
     

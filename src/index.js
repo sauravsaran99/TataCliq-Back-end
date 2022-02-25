@@ -23,7 +23,7 @@ passport.serializeUser(function (user, done) {
     done(null, user);
   });
   app.post('/login', signup)
-  app.post('/', login)
+  app.post('/home', login)
   app.get(
     "/auth/google",
     passport.authenticate("google", { scope: ["email", "profile"] })
