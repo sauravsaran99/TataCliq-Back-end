@@ -30,6 +30,11 @@
             border-color: lightgray;
             border-radius: 4px;
         }
+
+        input:focus {
+            outline: none;
+        }
+
        #container {
             display: flex;
             flex-direction: column;
@@ -114,14 +119,14 @@
         }
 
         #first_para {
-            margin: 10px auto;
+            margin: 19px auto 0 auto;
            
             width: 75%;
            
            
            
             font-size: 14px;
-            border: 1px solid red;
+            /* border: 1px solid red; */
         }
 
         .button {
@@ -135,10 +140,11 @@
             text-align: center;
             border: 0;
             outline: none;
-            background-color: #e4e4e4;
+             background-image: linear-gradient(to bottom right, #89216b, #da4453);
             cursor: not-allowed;
             
         }
+
 
         .btnEn {
             width: 80%;
@@ -160,7 +166,7 @@
             justify-content: flex-end;
         }
         .googleauth{
-            border:1px solid black;
+            /* border:1px solid black; */
             width: 80%;
             height: 30px;
             margin: auto;
@@ -180,6 +186,11 @@
             color: rgb(223,50,100);
             font-weight: bolder;
             letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        a {
+            margin: 0 auto;
         }
         
     </style>
@@ -220,12 +231,13 @@
             <a href="#" class="">Privacy Policy</a>
         </div>
         <button class="button" disabled>Continue</button>
-        <span id="reg_link">Create Account</span>
+        <a href="http://localhost:4553/signup"><span id="reg_link">Create Account</span></a>
+        
     </div>
 </body>
 
 </html>
-
+<!-- 
 <script>
    
     function handle() {
@@ -249,4 +261,4 @@
     document.querySelector("#close_btn").addEventListener("click", function () {
         window.location.href = "./index.html";
     })
-</script>
+</script> -->

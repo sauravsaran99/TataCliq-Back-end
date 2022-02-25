@@ -4,6 +4,14 @@ const app = express();
 require("dotenv").config();
 const passport = require("./configs/google_oauth");
 const productapiController = require('../src/controller/productapi.controller');
+
+//for form work
+app.use(express.urlencoded({
+  extended: true
+}))
+//end
+
+const {signup, login} = require('../src/controller/auth.controler')
 const homeController = require('../src/controller/home.controller');
 const parseUrl = express.urlencoded({ extended: false });
 const parseJson = express.json({ extended: false });
@@ -14,7 +22,8 @@ passport.serializeUser(function (user, done) {
   passport.deserializeUser(function (user, done) {
     done(null, user);
   });
-  
+  app.post('/login', signup)
+  app.post('/', login)
   app.get(
     "/auth/google",
     passport.authenticate("google", { scope: ["email", "profile"] })
@@ -37,6 +46,10 @@ app.use('/home', homeController);
 app.use("/login",async (req,res) =>{
  return res.render("users/login.ejs");
 })
+
+app.use("/signup",async (req,res) =>{
+  return res.render("users/signup.ejs");
+ })
 
 app.set('view engine', 'ejs');
 app.use(express.static("public"))
