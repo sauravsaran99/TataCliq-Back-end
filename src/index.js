@@ -60,6 +60,9 @@ app.use('/cart', async(req,res) => {
 app.use("/signup",async (req,res) =>{
   return res.render("users/signup.ejs");
  })
+app.use("/",async (req,res) =>{
+  return res.render("users/home.ejs");
+ })
 
 app.set('view engine', 'ejs');
 app.use(express.static("public"))
