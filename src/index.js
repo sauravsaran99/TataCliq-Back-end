@@ -4,7 +4,7 @@ const app = express();
 require("dotenv").config();
 const passport = require("./configs/google_oauth");
 const productapiController = require('../src/controller/productapi.controller');
-
+const port = process.env.PORT || 4553
 //for form work
 app.use(express.urlencoded({
   extended: true
@@ -46,6 +46,12 @@ app.use('/home', homeController);
 app.use("/login",async (req,res) =>{
  return res.render("users/login.ejs");
 })
+app.use("/thankyou", async(req, res) => {
+  return res.render("users/thankyou.ejs")
+})
+app.use("/checkout", async(req, res) => {
+  return res.render("users/check.ejs")
+})
 
 app.use('/cart', async(req,res) => {
   return res.render('users/cart.ejs')
@@ -58,7 +64,7 @@ app.use("/signup",async (req,res) =>{
 app.set('view engine', 'ejs');
 app.use(express.static("public"))
 
-app.listen(4553, async() => {
+app.listen(port, async() => {
     try {
         connect();
         console.log('Listening Port 4553');
