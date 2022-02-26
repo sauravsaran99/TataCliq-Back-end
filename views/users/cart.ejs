@@ -44,12 +44,12 @@
     }
 
     .product {
-        width: 80%;
+        width: 60%;
         min-height: 200px;
     }
 
     .box-2 {
-        width: 60%;
+        width: 80%;
         height: 250px;
         display: flex;
         /* justify-content: center; */
@@ -93,13 +93,110 @@
         font-weight: bold;
         cursor: pointer;
     }
+
+    .payment {
+        text-align: center;
+        margin-top: 30px;
+        width: 360px;
+        height: 420px;
+        margin-right: 60px;
+        background-color: #fff;
+        border-radius: 5px;
+        position: fixed;
+        z-index: 100;
+        right: 0;
+        /* bottom: 30px; */
+        top: 180px;
+    }
+
+    .main {
+        display: flex;
+    }
+
+    .firstp {
+        margin: 10px;
+        padding-bottom: 10px;
+        border-bottom: 2.5px dotted rgb(206, 204, 204);
+        
+    }
+
+    .secondp {
+        text-align: left;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .flex1 {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .final {
+        margin-top: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgb(156, 155, 155);
+    }
+
+    .total {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .checkout {
+        width: 150px;
+        height: 40px;
+        border-radius: 20px;
+        background-color: rgb(255, 23, 68);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: bold;
+    }
 </style>
 <body>
     <div id="navbar">
         
     </div>
     <h1>My Bag</h1>
+    <div class="main">
     <div class="product"></div>
+    <div class="payment">
+        <div class="firstp">Some items in your order are eligible<br>
+            for <span style="color: green; font-size: 16px; font-weight: bold;">FREE</span> Shipping! Check <span style="color: rgb(235, 29, 63); font-size: 16px; font-weight: bold;">cart <br> summary</span> for the final amount</div>
+
+            <div class="secondp">
+                <div class="flex1">
+                    <p>Bag Total</p>
+                    <p class="price">0</p>
+                </div>
+                <div class="flex1">
+                    <p>Shipping Charge</p>
+                    <p class="ship">0</p>
+                </div>
+                <div class="flex1">
+                    <p>Bag Subtotal</p>
+                    <p class="sub">0</p>
+                </div>
+                <div class="flex1">
+                    <p>Product Discount(s)</p>
+                    <p class="dis">0</p>
+                </div>
+                <div class="final" >
+                <p style="color: green;">You will save <span class="dis2">0</span> on this order</p>
+                <!-- Product Discount(s) -->
+            </div>
+
+            <div class="total">
+                <div>
+                    <p>Total</p>
+                    <p class="totalPrice">0</p>
+                </div>
+                <p class="checkout">Checkout</p>
+            </div>
+            </div>
+    </div>
+</div>
 </body>
 <script src="/script/navmain.js" type="module"></script>
 </html>
@@ -110,10 +207,21 @@
 
 
     display(arr);
+    
+    document.querySelector('.ship').textContent = '₹'+' '+shipping
     function display(arr) {
+       let shipping = 49;
+        let sum = 0;
+        let subSum = 0;
         document.querySelector('.product').innerHTML = '';
     arr.map(function(elm, ind) {
-        
+        // let sum = arr[ind].mainPrice.reduce((prev, curr) => 
+        //     Number(prev) + Number(curr),0)
+        // console.log(arr[ind].mainPrice)
+
+        sum += Number(arr[ind].mainPrice);
+        subSum += Number(arr[ind].discontPrice);
+        console.log(sum)
         const div1 =document.createElement('div');
         div1.setAttribute('class', 'box-2')
         const img = document.createElement('img');
@@ -135,7 +243,14 @@
 
         bt.addEventListener('click', function() {
             count++;
-            console.log(count)
+            sum += arr[ind].mainPrice;
+            subSum += arr[ind].discontPrice;
+            document.querySelector('.price').textContent = '₹'+ ' '+ sum;
+            document.querySelector('.totalPrice').textContent = '₹'+ ' '+ (sum + 49);
+            document.querySelector('.sub').textContent = '₹'+ ' '+ subSum;
+            document.querySelector('.dis').textContent = '-₹'+ ' '+ (subSum - sum);
+            document.querySelector('.dis2').textContent = '-₹'+ ' '+ (subSum - sum);
+            // console.log(count)
             bs.textContent = count;
         })
 
@@ -144,9 +259,18 @@
             arr.splice(ind, 1);
             localStorage.setItem("cart_data", JSON.stringify(arr));         
             display(arr);
+            sum -= arr[ind].mainPrice;
+            subSum -= arr[ind].discontPrice;
             bs.textContent = 0;
             } else {
                 count--;
+                sum -= arr[ind].mainPrice;
+                subSum -= arr[ind].discontPrice;
+                document.querySelector('.price').textContent = '₹'+ ' '+ sum;
+                document.querySelector('.totalPrice').textContent = '₹'+ ' '+ (sum + 49);
+                document.querySelector('.sub').textContent = '₹'+ ' '+ subSum;
+                document.querySelector('.dis').textContent = '-₹'+ ' '+ (subSum - sum);
+                document.querySelector('.dis2').textContent = '-₹'+ ' '+ (subSum - sum);
                 bs.textContent = count;
             }
         })
@@ -173,5 +297,22 @@
         div1.append(img, div2)
         document.querySelector('.product').append(div1);
     })
+    document.querySelector('.price').textContent = '₹'+ ' '+ sum;
+    document.querySelector('.totalPrice').textContent = '₹'+ ' '+ (sum + 49);
+    document.querySelector('.sub').textContent = '₹'+ ' '+ subSum;
+    document.querySelector('.dis').textContent = '-₹'+ ' '+ (subSum - sum);
+    document.querySelector('.dis2').textContent = '-₹'+ ' '+ (subSum - sum);
+
+    if(arr.length == 0) {
+                    shipping = 0;
+                    document.querySelector('.ship').textContent = '₹'+' '+shipping;
+                    document.querySelector('.totalPrice').textContent = '₹'+ ' '+ 0;
+                    // return;
+                } else {
+                    shipping = 49;
+                    document.querySelector('.ship').textContent = '₹'+' '+shipping;
+                }
 }
+
+document.querySelector('.totalPrice').textContent = '₹'+ ' '+ (sum + shipping);
 </script>
