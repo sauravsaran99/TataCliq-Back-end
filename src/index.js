@@ -39,10 +39,10 @@ passport.serializeUser(function (user, done) {
       res.render("users/index.ejs");
     }
   );
-app.use("/",homeController);
+app.use("/home",homeController);
 app.use(express.json());
 app.use('/products', productapiController);
-app.use('/home', homeController);
+// app.use('/', homeController);
 app.use("/login",async (req,res) =>{
  return res.render("users/login.ejs");
 })
@@ -59,6 +59,9 @@ app.use('/cart', async(req,res) => {
 
 app.use("/signup",async (req,res) =>{
   return res.render("users/signup.ejs");
+ })
+app.use("/",async (req,res) =>{
+  return res.render("users/index.ejs");
  })
 
 app.set('view engine', 'ejs');

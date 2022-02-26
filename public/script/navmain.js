@@ -43,11 +43,11 @@ function display3() {
 }
 
 document.querySelector('#ravnavone').addEventListener('click', function() {
-    window.location.href = 'http://localhost:4553/home'
+    window.location.href = '/home'
 })
 
 document.querySelector('.two4').addEventListener('click', function() {
-    window.location.href = 'http://localhost:4553/cart'
+    window.location.href = '/cart'
 })
 
     
