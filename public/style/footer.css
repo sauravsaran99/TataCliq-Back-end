@@ -14,7 +14,7 @@ font-family: 'Roboto Condensed', sans-serif;
             width: 85%;
             height: auto;
             margin: auto;
-            font-size: 17px;
+            font-size: 12px;
             margin-top: 30px;
             line-height: 20px;   
             margin-bottom: 30px;
@@ -44,7 +44,18 @@ font-family: 'Roboto Condensed', sans-serif;
         #tata{
             width: 90%;
         }
+
+        h4 {
+            margin-bottom: 12px;
+            /* word-spacing: 12px; */
+            letter-spacing: .8px;
+            font-weight: 500;
+            font-size: 16px;
+        }
         #list{
+            font-size: 12px;
+            font-weight: 100;
+            padding-top: 30px;
             width: 83%;
             margin: auto;
             display: grid;

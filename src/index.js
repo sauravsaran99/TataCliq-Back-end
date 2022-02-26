@@ -47,6 +47,10 @@ app.use("/login",async (req,res) =>{
  return res.render("users/login.ejs");
 })
 
+app.use('/cart', async(req,res) => {
+  return res.render('users/cart.ejs')
+})
+
 app.use("/signup",async (req,res) =>{
   return res.render("users/signup.ejs");
  })

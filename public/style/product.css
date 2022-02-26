@@ -2,6 +2,7 @@ body{
     background-color: #ececec;
 }
 
+
 #twobox {
     display: flex;
     justify-content: space-between;
