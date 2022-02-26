@@ -21,7 +21,7 @@
 
 
 
-    .box1 {
+    /* .box1 {
         width: 90%;
         height: 400px;
         margin: 20px auto;
@@ -31,10 +31,67 @@
         align-items: center;
         border-radius: 5px;
         flex-direction: column;
+    } */
+
+    /* h4 {
+        margin-top: 20px;
+    } */
+
+    img {
+        width: 120px;
+        height: 120px;
+        margin: 20px;
     }
 
-    h4 {
-        margin-top: 20px;
+    .product {
+        width: 80%;
+        min-height: 200px;
+    }
+
+    .box-2 {
+        width: 60%;
+        height: 250px;
+        display: flex;
+        /* justify-content: center; */
+        background-color: #fff;
+        border-radius: 5px;
+        margin: 30px;
+        display: flex;
+        align-items: center;
+        /* padding-left: 20px; */
+    }
+
+    p {
+        display: inline-block;
+        margin-right: 15px;
+        margin-top: 15px;
+    }
+
+    .second {
+        text-decoration: line-through;
+        color: rgb(129, 129, 129);
+    }
+
+    .remove {
+        font-size: 16px;
+        border-top: 1px solid black;
+        margin-top: 12px;
+        padding-top: 5px;
+        cursor: pointer;
+    }
+
+    .bf {
+        display: inline-block;
+        width: 30px;
+        /* height: 30px; */
+        padding: 5px 0;
+        background-color: rgb(214, 197, 197);
+        margin: 2px;
+        margin-top: 10px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
     }
 </style>
 <body>
@@ -42,10 +99,79 @@
         
     </div>
     <h1>My Bag</h1>
-    <div class="box1">
-        <img src="https://www.tatacliq.com/src/cart/components/img/emptycard.e2924cd0225c.png" alt="" srcset="">
-        <h4>Cart Page Is Under Construction</h4>
-    </div>
+    <div class="product"></div>
 </body>
 <script src="/script/navmain.js" type="module"></script>
 </html>
+
+<script>
+    let arr = JSON.parse(localStorage.getItem("cart_data")) || [];
+    console.log(arr)
+
+
+    display(arr);
+    function display(arr) {
+        document.querySelector('.product').innerHTML = '';
+    arr.map(function(elm, ind) {
+        
+        const div1 =document.createElement('div');
+        div1.setAttribute('class', 'box-2')
+        const img = document.createElement('img');
+        img.src = elm.image;
+        const para1 = document.createElement('div');
+        const para2 = document.createElement('p');
+        const para3 = document.createElement('p');
+        const remove = document.createElement('div');
+        const bf = document.createElement('div');
+        bf.setAttribute('class', 'bf');
+        bf.innerHTML = '-';
+        const bs = document.createElement('div');
+        bs.setAttribute('class', 'bf');
+        let count = 1
+        const bt = document.createElement('div');
+        bs.textContent = count;
+        bt.setAttribute('class', 'bf');
+        bt.textContent = '+';
+
+        bt.addEventListener('click', function() {
+            count++;
+            console.log(count)
+            bs.textContent = count;
+        })
+
+        bf.addEventListener('click', function() {
+            if(count == 1) {
+            arr.splice(ind, 1);
+            localStorage.setItem("cart_data", JSON.stringify(arr));         
+            display(arr);
+            bs.textContent = 0;
+            } else {
+                count--;
+                bs.textContent = count;
+            }
+        })
+        const div2 =document.createElement('div');
+
+        remove.addEventListener('click', function() {
+            arr.splice(ind, 1);
+            localStorage.setItem("cart_data", JSON.stringify(arr));         
+            display(arr);
+        })
+        
+        remove.setAttribute('class', 'remove')
+        remove.innerText = "Remove";
+
+        div2.append(para1, para2, para3, remove, bf, bs, bt)
+        para1.innerText = elm.description;
+        para2.innerText = '₹' + Number(elm.mainPrice);
+        para2.setAttribute('price', 'main')
+        para3.innerText = '₹' + Number(elm.discontPrice);
+        para3.setAttribute('class', 'second');
+        
+        
+
+        div1.append(img, div2)
+        document.querySelector('.product').append(div1);
+    })
+}
+</script>

@@ -64,7 +64,8 @@ router.get('', async(req, res) => {
 
     const product = await Product.find().lean().exec();
 
-    return res.render("users/product.ejs", {product})
+    return res.render("users/product.ejs", {product});
+    // return res.render("users/product.ejs", JSON.stringify(product));
     } catch(err) {
         return res.status(500).send('err', err.message)
     }

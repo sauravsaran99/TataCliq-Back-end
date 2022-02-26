@@ -5,10 +5,10 @@ const Product = require('../models/productapi.modle');
 
 router.get('', async(req, res) => {
     try {
-    return res.render("users/index.ejs")
+    return res.render("users/index.ejs");
     } catch(err) {
-        return res.send('err', err.message)
+        return res.send('err', err.message);
     }    
 })
 
-module.exports = router
+module.exports = router;

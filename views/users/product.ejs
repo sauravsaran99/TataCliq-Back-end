@@ -52,9 +52,18 @@
                 <p class="second-text"><%= product.description %></p>
                 <p class="money">₹<%= product.mainPrice %> <span><del>₹<%= product.discontPrice %></del></span></p>
 
-                <p class="button">Buy Now</p>
+                <p class="button" onClick="sendDataToCart('<%= JSON.stringify(product)%>')">Buy Now</p>
             </div>
                 <% } %>
+                <script>
+
+                    let arr = JSON.parse(localStorage.getItem("cart_data")) || [];
+                    function sendDataToCart(product) {
+                    product = JSON.parse(product);
+                    arr.push(product);    
+                    localStorage.setItem("cart_data", JSON.stringify(arr));               
+}
+                </script>
 </div>
 </div>
 
@@ -74,4 +83,9 @@
       let foot = document.querySelector('#Foot_container');
 
     foot.innerHTML = footer();
+
+// function sendDataToCart(product) {
+//     product = JSON.parse(product);
+//     console.log(product)
+// }
 </script> 
