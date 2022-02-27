@@ -51,9 +51,14 @@ app.get("/",async (req,res) =>{
  return res.render("users/index.ejs");
 })
 
-app.use("/thankyou", async(req, res) => {
-  return res.render("users/thankyou.ejs")
-})
+app.get("/thankyou",async (req,res) =>{
+  return res.render("users/thankyou.ejs");
+ })
+
+// app.use("/thankyou", async(req, res) => {
+//   return res.render("users/thankyou.ejs")
+// })
+
 app.use("/checkout", async(req, res) => {
   return res.render("users/check.ejs")
 })
