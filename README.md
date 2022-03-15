@@ -1,5 +1,5 @@
 # TataCliq-Back-end
-This is a clone of TataCliq.com. It is an ecommerce-website for buying different products.This projext was completed within 4 days .
+This is a clone of TataCliq.com. It is an ecommerce-website for buying different products.This project was completed within 4 days .
 
 # Deploy Link
 https://sleepy-scrubland-64819.herokuapp.com/home
